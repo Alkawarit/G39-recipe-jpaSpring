@@ -1,33 +1,38 @@
 package se.lexicon.aladdin.g39recipejpaspring.models.entity;
 
+
+
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.util.Objects;
 
+import static se.lexicon.aladdin.g39recipejpaspring.models.constants.EntityConstants.GENERATOR;
+import static se.lexicon.aladdin.g39recipejpaspring.models.constants.EntityConstants.UUID_GENERATOR;
+
 @Entity
 public class Ingredient {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-
-   @Column(updatable = false)
-    private int id;
+@Id
+@GeneratedValue(generator = GENERATOR)
+@GenericGenerator(name = GENERATOR, strategy = UUID_GENERATOR)
+@Column(updatable = false)
+    private String  id;
     @Column(unique = true)
     private String ingredientName;
 
     public Ingredient() {
     }
 
-    public Ingredient(int id, String ingredientName) {
+    public Ingredient(String id, String ingredientName) {
         this.id = id;
         this.ingredientName = ingredientName;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -39,12 +44,13 @@ public class Ingredient {
         this.ingredientName = ingredientName;
     }
 
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Ingredient that = (Ingredient) o;
-        return id == that.id && Objects.equals(ingredientName, that.ingredientName);
+        return Objects.equals(id, that.id) && Objects.equals(ingredientName, that.ingredientName);
     }
 
     @Override
@@ -55,7 +61,7 @@ public class Ingredient {
     @Override
     public String toString() {
         return "Ingredient{" +
-                "id=" + id +
+                "id='" + id + '\'' +
                 ", ingredientName='" + ingredientName + '\'' +
                 '}';
     }
