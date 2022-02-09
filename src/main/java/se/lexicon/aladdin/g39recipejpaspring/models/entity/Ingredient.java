@@ -2,17 +2,14 @@ package se.lexicon.aladdin.g39recipejpaspring.models.entity;
 
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
 public class Ingredient {
     @Id
-    @GeneratedValue(generator = "uuid")
-    @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
    @Column(updatable = false)
     private int id;
     @Column(unique = true)

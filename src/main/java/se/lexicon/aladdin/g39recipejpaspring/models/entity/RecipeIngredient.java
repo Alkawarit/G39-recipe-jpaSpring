@@ -1,35 +1,25 @@
 package se.lexicon.aladdin.g39recipejpaspring.models.entity;
 
-import org.hibernate.annotations.GenericGenerator;
 import se.lexicon.aladdin.g39recipejpaspring.models.constants.Measurement;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import java.util.Objects;
 
-import static se.lexicon.aladdin.g39recipejpaspring.models.constants.EntityConstants.GENERATOR;
-import static se.lexicon.aladdin.g39recipejpaspring.models.constants.EntityConstants.UUID_GENERATOR;
-
-@Entity
 public class RecipeIngredient {
-    @Id
-    @GeneratedValue(generator = GENERATOR)
-    @GenericGenerator(name = GENERATOR,strategy = UUID_GENERATOR)
-    @Column(updatable = false)
     private String id;
+    private Ingredient ingredient;
     private double amount;
     private Measurement measurement;
+    private Recipe recipe;
 
-    public RecipeIngredient() {
-    }
-
-    public RecipeIngredient(String id, double amount, Measurement measurement) {
+    public RecipeIngredient(String id, Ingredient ingredient, double amount, Measurement measurement, Recipe recipe) {
         this.id = id;
+        this.ingredient = ingredient;
         this.amount = amount;
         this.measurement = measurement;
+        this.recipe = recipe;
+    }
 
+    public RecipeIngredient() {
     }
 
     public String getId() {
@@ -38,6 +28,14 @@ public class RecipeIngredient {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public Ingredient getIngredient() {
+        return ingredient;
+    }
+
+    public void setIngredient(Ingredient ingredient) {
+        this.ingredient = ingredient;
     }
 
     public double getAmount() {
@@ -56,25 +54,35 @@ public class RecipeIngredient {
         this.measurement = measurement;
     }
 
+    public Recipe getRecipe() {
+        return recipe;
+    }
+
+    public void setRecipe(Recipe recipe) {
+        this.recipe = recipe;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         RecipeIngredient that = (RecipeIngredient) o;
-        return Double.compare(that.amount, amount) == 0 && Objects.equals(id, that.id) && measurement == that.measurement;
+        return Double.compare(that.amount, amount) == 0 && Objects.equals(id, that.id) && Objects.equals(ingredient, that.ingredient) && measurement == that.measurement && Objects.equals(recipe, that.recipe);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, amount, measurement);
+        return Objects.hash(id, ingredient, amount, measurement, recipe);
     }
 
     @Override
     public String toString() {
         return "RecipeIngredient{" +
                 "id='" + id + '\'' +
+                ", ingredient=" + ingredient +
                 ", amount=" + amount +
                 ", measurement=" + measurement +
+                ", recipe=" + recipe +
                 '}';
     }
 }
