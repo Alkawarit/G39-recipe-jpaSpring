@@ -2,6 +2,7 @@ package se.lexicon.aladdin.g39recipejpaspring.models.entity;
 
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 public class Recipe {
@@ -10,7 +11,13 @@ public class Recipe {
     @Column(updatable = false)
     private int id;
     private String recipeName;
-
+    @OneToMany(
+            cascade = {CascadeType.DETACH, CascadeType.REFRESH},
+            fetch = FetchType.LAZY,
+            orphanRemoval = true,
+            mappedBy = "recipe"
+    )
+    private Set<RecipeIngredient> recipeIngredient;
     public Recipe(int id, String recipeName) {
         this.id = id;
         this.recipeName = recipeName;
@@ -34,4 +41,5 @@ public class Recipe {
     public void setRecipeName(String recipeName) {
         this.recipeName = recipeName;
     }
+
 }
