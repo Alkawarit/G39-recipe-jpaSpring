@@ -26,7 +26,7 @@ public class RecipeCategory {
     @JoinTable(
             name = "recipe_recipe_category",
             joinColumns = @JoinColumn(name = "fk_recipe_id", table = "recipe_recipe_category"),
-            inverseJoinColumns = @JoinColumn(name = "recipe_category_id", table="recipe_recipe_category")
+            inverseJoinColumns = @JoinColumn(name = "fk_recipe_category_id", table="recipe_recipe_category")
     )
     private Set<Recipe> recipe;
 
