@@ -10,4 +10,5 @@ import java.util.Optional;
 
 public interface AppRoleDAO extends JpaRepository<AppRole, String > {
 
+    Optional<AppRole> findByAppRole(@Param("appRole") String appRole);
 }
