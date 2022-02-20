@@ -1,4 +1,4 @@
-package se.lexicon.aladdin.g39recipejpaspring.models.dto;
+package se.lexicon.aladdin.g39recipejpaspring.models.dto.view;
 
 import se.lexicon.aladdin.g39recipejpaspring.models.entity.Recipe;
 

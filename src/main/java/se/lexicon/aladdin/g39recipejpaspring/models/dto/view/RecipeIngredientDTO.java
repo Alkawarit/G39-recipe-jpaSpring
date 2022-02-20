@@ -1,8 +1,6 @@
-package se.lexicon.aladdin.g39recipejpaspring.models.dto;
+package se.lexicon.aladdin.g39recipejpaspring.models.dto.view;
 
 import se.lexicon.aladdin.g39recipejpaspring.models.constants.Measurement;
-import se.lexicon.aladdin.g39recipejpaspring.models.entity.Ingredient;
-import se.lexicon.aladdin.g39recipejpaspring.models.entity.Recipe;
 
 import java.io.Serializable;
 

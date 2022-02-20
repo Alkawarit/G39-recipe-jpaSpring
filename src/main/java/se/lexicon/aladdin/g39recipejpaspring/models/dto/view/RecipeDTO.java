@@ -1,8 +1,4 @@
-package se.lexicon.aladdin.g39recipejpaspring.models.dto;
-
-import se.lexicon.aladdin.g39recipejpaspring.models.entity.RecipeCategory;
-import se.lexicon.aladdin.g39recipejpaspring.models.entity.RecipeIngredient;
-import se.lexicon.aladdin.g39recipejpaspring.models.entity.RecipeInstruction;
+package se.lexicon.aladdin.g39recipejpaspring.models.dto.view;
 
 import java.io.Serializable;
 import java.util.List;
