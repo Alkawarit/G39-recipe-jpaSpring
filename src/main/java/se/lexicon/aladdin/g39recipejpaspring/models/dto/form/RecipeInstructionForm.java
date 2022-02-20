@@ -1,6 +1,7 @@
 package se.lexicon.aladdin.g39recipejpaspring.models.dto.form;
 
 import org.springframework.validation.annotation.Validated;
+import se.lexicon.aladdin.g39recipejpaspring.validation.OnPost;
 import se.lexicon.aladdin.g39recipejpaspring.validation.OnPut;
 
 import javax.validation.constraints.NotBlank;
@@ -8,20 +9,16 @@ import java.io.Serializable;
 
 import static se.lexicon.aladdin.g39recipejpaspring.validation.message.ValidationMessages.MANDATORY_FIELD;
 
+
 @Validated
-public class IngredientForm implements Serializable {
+public class RecipeInstructionForm implements Serializable {
 
-    @NotBlank(message = MANDATORY_FIELD, groups = OnPut.class)
-    private String  id;
+    @NotBlank(message = MANDATORY_FIELD, groups = OnPost.class)
+    private String id;
     @NotBlank(message = MANDATORY_FIELD)
-    private String ingredientName;
+    private String instructions;
 
-    public IngredientForm(String id, String ingredientName) {
-        this.id = id;
-        this.ingredientName = ingredientName;
-    }
-
-    public IngredientForm() {
+    public RecipeInstructionForm() {
     }
 
     public String getId() {
@@ -32,11 +29,11 @@ public class IngredientForm implements Serializable {
         this.id = id;
     }
 
-    public String getIngredientName() {
-        return ingredientName;
+    public String getInstructions() {
+        return instructions;
     }
 
-    public void setIngredientName(String ingredientName) {
-        this.ingredientName = ingredientName;
+    public void setInstructions(String instructions) {
+        this.instructions = instructions;
     }
 }
